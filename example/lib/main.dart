@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_weather_demo/watch_stream_example.dart';
+import 'package:flutter_weather_demo/weather_controller.dart';
 import 'package:flutter_weather_demo/weather_manager.dart';
 import 'package:get_it/get_it.dart';
 
@@ -14,11 +16,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      home: HomePage(),
+      home: WatchStreamExample(),
     );
   }
 }
 
 void registerManager() {
+  GetIt.I.registerSingleton<WeatherController>(WeatherController());
   GetIt.I.registerSingleton<WeatherManager>(WeatherManager());
 }
