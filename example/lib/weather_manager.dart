@@ -11,9 +11,11 @@ class WeatherManager {
   late Command<bool, bool> setExecutionStateCommand;
   late Command<String, String> textChangedCommand;
 
+  late List<WeatherEntry> _weatherEntries;
+
   WeatherManager() {
     // Command expects a bool value when executed and sets it as its own value
-    setExecutionStateCommand = Command.createSync<bool, bool>((b) => b, true);
+    setExecutionStateCommand = Command.createSync<bool, bool>((b) => b, false);
 
     // We pass the result of switchChangedCommand as restrictions to the upDateWeatherCommand
     updateWeatherCommand = Command.createAsync<String?, List<WeatherEntry>>(
